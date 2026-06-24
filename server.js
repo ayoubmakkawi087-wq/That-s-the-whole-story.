@@ -290,5 +290,9 @@ function handleLeave(socket, roomId) {
     io.emit('availableRooms', getPublicRooms());
 }
 
-const PORT = 3000;
-http.listen(PORT, () => console.log(`السيرفر جاهز تماماً على الرابط المحلي: http://localhost:${PORT}`));
+// التعديل الجديد للتوافق مع سيرفرات Render
+const PORT = process.env.PORT || 3000;
+
+http.listen(PORT, () => {
+    console.log(`السيرفر جاهز تماماً ويعمل على بورت: ${PORT}`);
+});
