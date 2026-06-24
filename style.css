@@ -1,0 +1,166 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0b0b0e;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    padding-bottom: 90px;
+    direction: rtl;
+    user-select: none;
+    margin: 0;
+}
+.container { max-width: 650px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+.card {
+    background: #14141f;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    border: 1px solid #252538;
+}
+.grid-inputs { display: flex; gap: 12px; text-align: right; margin-bottom: 5px; }
+.grid-inputs div { flex: 1; }
+
+.num-input-wrapper input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+    text-align: center;
+    font-weight: bold;
+}
+.num-input-wrapper input[type="number"]::-webkit-outer-spin-button,
+.num-input-wrapper input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: auto;
+    opacity: 1;
+}
+
+input, button, select {
+    padding: 12px; font-size: 15px; border-radius: 12px;
+    border: 1px solid #32324d; margin: 6px 0; width: 100%;
+    box-sizing: border-box; background: #1c1c2b; color: white; outline: none;
+}
+button { background-color: #ff4757; cursor: pointer; font-weight: bold; border: none; transition: 0.2s ease; }
+button:hover { background-color: #e84118; transform: translateY(-1px); }
+.btn-secondary { background-color: #4b4b5e; }
+.hidden { display: none !important; }
+
+.animate-fade { animation: fadeIn 0.25s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+/* نظام زاوية الإعدادات والاستجابة */
+.settings-container { position: fixed; top: 15px; left: 15px; z-index: 1000; text-align: left; }
+.settings-gear { background: #1c1c2b; border: 1px solid #32324d; border-radius: 50%; width: 45px; height: 45px; font-size: 20px; padding: 0; line-height: 45px; }
+.settings-menu { background: #14141f; border: 1px solid #3a3a54; padding: 15px; border-radius: 14px; margin-top: 8px; width: 180px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); text-align: center;}
+
+/* نظام زر الشات العائم المضيء والمتحرك دورياً */
+.floating-chat-container { position: fixed; top: 15px; right: 15px; z-index: 1000; }
+.chat-badge-btn {
+    background: #2ed573; border: none; border-radius: 50%; width: 48px; height: 48px; 
+    font-size: 22px; padding: 0; line-height: 48px; position: relative;
+    box-shadow: 0 0 12px rgba(46, 213, 115, 0.4);
+    animation: pulseGrow 2.5s infinite ease-in-out;
+}
+.chat-badge-btn:hover { background: #26af5f; }
+
+@keyframes pulseGrow {
+    0% { transform: scale(1); box-shadow: 0 0 10px rgba(46, 213, 115, 0.4); }
+    50% { transform: scale(1.12); box-shadow: 0 0 22px rgba(46, 213, 115, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 10px rgba(46, 213, 115, 0.4); }
+}
+
+.notif-dot {
+    position: absolute; top: -2px; left: -2px; width: 14px; height: 14px;
+    background-color: #ff4757; border-radius: 50%; border: 2px solid #fff;
+    animation: heartBeat 1.2s infinite;
+}
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* تصميم نافذة الشات المنبثقة والـ Modals */
+.chat-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8); z-index: 1001;
+    display: flex; align-items: center; justify-content: center; padding: 15px; box-sizing: border-box;
+}
+.chat-modal-content {
+    background: #14141f; width: 100%; max-width: 450px; border-radius: 20px;
+    border: 1px solid #32324d; display: flex; flex-direction: column; overflow: hidden;
+}
+.chat-modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #1c1c2b; padding: 12px 20px; border-bottom: 1px solid #252538;
+}
+.chat-modal-header h3 { margin: 0; font-size: 16px; }
+.close-modal-btn { background: transparent; font-size: 26px; color: #aaa; width: auto; margin: 0; padding: 0; }
+.close-modal-btn:hover { color: #fff; background: transparent; transform: none; }
+
+#chat-messages {
+    height: 250px; overflow-y: auto; background: #09090f; padding: 15px;
+    text-align: right; display: flex; flex-direction: column; gap: 8px;
+}
+.chat-msg { font-size: 14px; line-height: 1.4; word-break: break-word; }
+.chat-msg b { color: #ff9f43; }
+.chat-modal-footer { display: flex; gap: 8px; padding: 12px; background: #1c1c2b; }
+.chat-modal-footer input { margin: 0; }
+.chat-modal-footer button { width: auto; margin: 0; padding: 0 20px; white-space: nowrap; background: #2ed573; }
+
+/* شبكة الـ 10 أزرار لخيارات التخمين لـ برا السالفة */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+.options-grid button {
+    margin: 0;
+    padding: 14px;
+    font-size: 14px;
+    background: #1c1c2b;
+    border: 2px solid #32324d;
+    transition: all 0.2s;
+}
+.options-grid button:hover {
+    background: #ff9f43;
+    border-color: #ff9f43;
+    color: #0b0b0e;
+}
+
+/* شريط التصفح السفلي للهواتف والـ PC */
+.bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0; height: 70px;
+    background: #14141f; border-top: 2px solid #252538;
+    display: flex; justify-content: space-around; align-items: center; z-index: 999;
+}
+.nav-item { background: transparent; margin: 0; width: 46%; height: 75%; font-size: 15px; color: #888; }
+.nav-item:hover { transform: none; background: rgba(255,255,255,0.02); }
+.active-tab { background: #ff4757 !important; color: white !important; border-radius: 12px; }
+
+/* طاولة اللعب الاستجابية */
+.table-view {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+    background: #231710; padding: 15px; border-radius: 25px;
+    margin: 15px 0; border: 4px solid #4e342e; box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
+}
+.player-seat {
+    background: #252538; padding: 10px; border-radius: 10px;
+    min-width: 85px; font-size: 13px; text-align: center; font-weight: bold;
+    border: 2px solid #3a3a54; box-sizing: border-box;
+}
+.player-seat.speaking { border-color: #ff9f43; background: #382813; box-shadow: 0 0 10px #ff9f43; }
+.player-seat.voting-phase { border-color: #2ed573; cursor: pointer; }
+.player-seat.my-own-seat { cursor: not-allowed; opacity: 0.6; border-color: #32324d; }
+.player-seat.voted { border-color: #2ed573; background: #133b1f; }
+.player-seat.dead { background: #1a1a1a !important; border-color: #444 !important; color: #666; }
+
+.timer { font-size: 32px; font-weight: bold; color: #ff9f43; margin: 5px 0; }
+.room-item { display: flex; justify-content: space-between; align-items: center; background: #1c1c2b; padding: 10px 15px; border-radius: 12px; margin: 6px 0; font-size: 14px; }
+.room-item button { width: auto; margin: 0; padding: 6px 14px; font-size: 13px; }
+
+@media (max-width: 400px) {
+    .grid-inputs { flex-direction: column; gap: 0; }
+    input, button, select { font-size: 14px; padding: 10px; }
+    .player-seat { min-width: 75px; font-size: 12px; }
+    .options-grid { grid-template-columns: 1fr; }
+}
