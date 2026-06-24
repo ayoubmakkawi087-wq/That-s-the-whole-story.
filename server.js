@@ -3,7 +3,7 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-app.use(express.static('public'));
+app.use(express.static(__dirname));
 
 const topics = {
     "سيارات": ["تويوتا", "مرسيدس", "بي إم دبليو", "فورد", "فراري", "لكزس", "نيسان", "هيونداي", "كيا", "أودي", "بوش", "شيفورليه", "تسلا", "دوج", "جيب", "هوندا", "مازدا", "رينو"],
